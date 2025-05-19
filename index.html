@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Tahya!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <style>
+        body {
+            overflow-x: hidden;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+        }
+        #countdown-page, #main-page {
+            min-height: 0vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .countdown-container {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .countdown-item {
+            display: inline-block;
+            margin: 0 20px;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 0px 2px 2px white;
+        }
+        .countdown-label {
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+        .enter-button {
+            background: #ff4757;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 0 20px rgba(255, 71, 87, 0.7);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .enter-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(255, 71, 87, 1);
+        }
+        .nav-button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background: #ffffff;
+            color: #ff4757;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s;
+        }
+        .nav-button:hover {
+            background: #ff4757;
+            color: white;
+        }
+        .section {
+            display: none;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            margin-top: 20px;
+            max-width: 800px;
+            width: 100%;
+            color: #333;
+        }
+        .section.active {
+            display: block;
+        }
+        .album-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .album-grid img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #ff4757;
+            opacity: 0.8;
+            animation: fall 5s linear infinite;
+        }
+@keyframes fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+        #main-page{
+            display: none;
+        }
+        .hidden{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Countdown Page -->
+    <div id="countdown-page">
+        <div class="countdown-container">
+            <h1 class="text-5xl font-bold mb-10">Happy Birthday, Tahya!</h1>
+            <p class="text-2xl mb-8">
+                Counting down to your special day!
+            </p>
+            <div id="countdown">
+                <div class="countdown-item">
+                    <span id="days">00</span><br><span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="hours">00</span><br><span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="minutes">00</span><br><span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="seconds">5</span><br><span class="countdown-label">Seconds</span>
+                </div>
+            </div>
+            <a id="enter-button" class="enter-button hidden" href="#main">Enter Celebration</a>
+            <h2 id="animLov">🤍💓🤍💓🤍💓🤍💓🤍</h2>
+        </div>
+    </div>
+
+    <!-- Main Celebration Page -->
+    <div id="main-page" class="hidden">
+        
+        <h1 class="text-5xl font-bold mb-10">Happy 15th Birthday, Tahya!</h1>
+        <div class="flex mb-10">
+            <div class="nav-button" onclick="showSection('album')">
+                Album
+            </div>
+            <div class="nav-button" onclick="showSection('cerita')">
+                Cerita
+            </div>
+            <div class="nav-button" onclick="showSection('pesan')">
+                Pesan
+            </div>
+        </div>
+        <div id="album" class="section active">
+            <h2 class="text-3xl font-bold mb-6">Album</h2>
+            <div class="album-grid">
+                <!-- Replace these URLs with your own image links -->
+                <img src="https://iili.io/36Jl8yN.md.jpg">
+                <img src="https://iili.io/36JXadg.md.jpg" alt="Memory 2">
+                <img src="https://iili.io/36JkWwg.th.jpg" alt="Memory 3">
+            </div>
+        </div>
+        <div id="cerita" class="section">
+            <h2 class="text-3xl font-bold mb-6">Ungkapan</h2>
+            <p class="text-lg">
+                Eaa,gimana bagus gak website nya, aku buat ini khusus kamu yaa,buat website ultah mu, maap ya cuma bisa bikin web kayak gini aja hehe🗿
+            </p>
+        </div>
+        <div id="pesan" class="section">
+            <h2 class="text-3xl font-bold mb-6">My Message to You</h2>
+            <p class="text-lg">
+                Happy Birthday, Tahya! Ciee udah masuk 15 tahun niihh,kamu mau merubah diri kayak gimana ni, semoga kamu bakal jdi lebih dewasa lagi ya, sehat selalu sayangg.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Countdown Logic
+        const birthday = new Date('2025-05-24T00:00:00');
+        const countdownPage = document.getElementById('countdown-page');
+        const mainPage = document.getElementById('main-page');
+        const enterButton = document.getElementById('enter-button');
+        const daysEl = document.getElementById('days');
+        const hoursEl = document.getElementById('hours');
+        const minutesEl = document.getElementById('minutes');
+        const secondsEl = document.getElementById('seconds');
+        let animLuv=0;
+        let anim3=false;
+        let setTime=false;
+        
+        
+        function updateCountdown() {
+            const now = new Date();
+            const timeLeft = birthday - now;
+            
+            if (timeLeft <= 0) {
+                countdownPage.innerHTML = '';
+                enterButton.classList.remove('hidden');
+                gsap.to(enterButton, {
+                    scale: 1.2, duration: 0.5, yoyo: true, repeat: -1
+                });
+                document.getElementById("main-page").style.display="block";
+                return;
+            }
+            
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            daysEl.textContent = days.toString().padStart(2, '0');
+            hoursEl.textContent = hours.toString().padStart(2, '0');
+            minutesEl.textContent = minutes.toString().padStart(2, '0');
+            secondsEl.textContent = seconds.toString().padStart(2, '0');
+            
+            setTimeout(updateCountdown, 1000);
+        }
+        let timeDown=0;
+        // Check if birthday has arrived
+        if (new Date() >= birthday) {
+            //countdownPage.innerHTML = '';
+            //enterButton.classList.remove('hidden');
+            //gsap.to(enterButton, {
+                //scale: 1.2, duration: 0.5, yoyo: true, repeat: -1
+                
+            //});
+            setTime=true;
+            timeDown=5;
+            
+            
+            //document.getElementById("main-page").style.display="block";
+        } else {
+            updateCountdown();
+        }
+        
+        setInterval(function(){
+            if(setTime==true){
+                timeDown--;
+                document.getElementById("seconds").innerHTML=timeDown;
+                document.getElementById("seconds").style.color="yellow";
+                if(timeDown<0){
+                    setTime=false;
+                    updateCountdown();
+                }
+            }
+        },1000)
+        let anim2=0;
+        setInterval(function(){
+            
+            if(anim2==0){
+                animLuv++;
+            }else if(anim2==1){
+                animLuv--;
+            }
+            console.log(animLuv)
+            
+            if(animLuv>6){
+                anim2=1
+                
+            }else if(animLuv<1){
+                anim2=0;
+            }
+            if(animLuv==0){
+                document.getElementById("animLov").innerHTML="💓🤍🤍🤍🤍🤍🤍🤍";
+                
+            }else if(animLuv==1){
+                document.getElementById("animLov").innerHTML="🤍💓🤍🤍🤍🤍🤍🤍";
+            }else if(animLuv==2){
+                document.getElementById("animLov").innerHTML="🤍🤍💓🤍🤍🤍🤍🤍";
+            }else if(animLuv==3){
+                document.getElementById("animLov").innerHTML="🤍🤍🤍💓🤍🤍🤍🤍";
+            }else if(animLuv==4){
+                document.getElementById("animLov").innerHTML="🤍🤍🤍🤍💓🤍🤍🤍";
+            }else if(animLuv==5){
+                document.getElementById("animLov").innerHTML="🤍🤍🤍🤍🤍💓🤍🤍";
+            }else if(animLuv==6){
+                document.getElementById("animLov").innerHTML="🤍🤍🤍🤍🤍🤍💓🤍";
+            }else if(animLuv==7){
+                document.getElementById("animLov").innerHTML="🤍🤍🤍🤍🤍🤍🤍💓";
+            }
+        },200)
+        // Enter button click
+        enterButton.addEventListener('click', () => {
+            countdownPage.classList.add('hidden'); // Hilangkan countdown
+            countdownPage.style.zIndex = '-1'; // Pastikan tidak terlihat
+            mainPage.style.display = 'flex'; // Tampilkan halaman utama
+            mainPage.style.zIndex = '2'; // Naikkan z-index halaman utama
+            gsap.from(mainPage, {
+                opacity: 0, y: -50, duration: 1
+            }); // Transisi
+            createConfetti(); // Efek konfeti
+        });
+
+        // Navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+            gsap.from(`#${sectionId}`, {
+                opacity: 0, x: 50, duration: 0.5
+            });
+        }
+
+        // Confetti Animation
+        function createConfetti() {
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.background = ['#ff4757',
+                    '#4ecdc4',
+                    '#ffe66d'][Math.floor(Math.random() * 3)];
+                confetti.style.animationDelay = Math.random() * 5 + 's';
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 5000);
+            }
+        }
+        
+    </script>
+</body>
+</html>
